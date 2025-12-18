@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
+import matplotlib.colors as mcolors
 import locale
 import pandas as pd
 
@@ -11,6 +12,40 @@ import streamlit as st
 import smtplib
 from email.message import EmailMessage
 import os
+
+
+
+
+
+mplstyle = f"C:/Users/samueldatasci/OneDrive - NOVAIMS/NOVAENES/Python/config/NOVAENES.mplstyle"
+
+K_MATPLOTLIB_STYLES_FILE = mplstyle
+
+
+# define colormap NOVAIMS
+#colors = ["#BED62F", "#5C666C"]
+
+cdict = {
+    'red': [(0, 0.5, 0.5), (1.0, 0.5, 0.5)],
+    'green': [(0, 0.5, 0.5), (1.0, 0.8, 0.8)],
+    'blue': [(0, 0.5, 0.5), (1.0, 0.2, 0.2)]
+}
+
+# try:
+# 	plt.cm.unregister_cmap('NOVAIMS')
+# except:
+# 	pass
+
+# create the colormap from the dictionary
+nova_cmap = mcolors.LinearSegmentedColormap('nova_cmap', cdict)
+
+# register the colormap with matplotlib
+try:
+	plt.cm.register_cmap('NOVAIMS', nova_cmap, force=True)
+except AttributeError:
+	plt.colormaps.register(nova_cmap, name='NOVAIMS', force=True)
+
+
 
 
 
@@ -239,7 +274,7 @@ def chart(kind="line", df=None, stacked=False, normalize=False, \
 	# Pivot the DataFrame to create the data for the stacked bar chart
 
 
-	st.info(f"Chart parameters: title={title}")
+	# st.info(f"Chart parameters: title={title}")
 
 	if xvar == "None" or xvar == "":
 		xvar = None
