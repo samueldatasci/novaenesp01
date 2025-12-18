@@ -196,7 +196,7 @@ def buildChart(data, xvar, yvar, zvar, yop, filters, charttype="line", title = N
 
 	st.pyplot(fig)
 
-	return
+	return fig
 
 
 data = load_data()
@@ -330,9 +330,27 @@ else:
 	fig = buildChart( data, xvar, yvar, zvar, yop, filters, charttype=charttype, title=title, xlabel=xlabel, ylabel=ylabel, colormap=colormap )
 
 
+
 # Display the plot
 
-# st.divider()
+st.divider()
+
+st.subheader("Want to get the image by email?")
+
+
+
+
+# 1. UI Setup
+st.title("Email Image Sender")
+recipient = st.text_input("Enter recipient email:")
+send_button = st.button("Send Email")
+
+# 3. Execution
+if send_button and recipient:
+    with st.spinner("Sending..."):
+        if send_email(recipient, fig):
+            st.success("Email sent successfully!")
+
 
 
 
