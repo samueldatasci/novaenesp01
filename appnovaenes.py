@@ -59,9 +59,9 @@ st.set_page_config(
     #layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"
+        #'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "mailto:samuel.santos.magic@gmail.com/?subject=Bug%20in%20Data%20Research%20meetup%20app&body=Describe%20the%20issue...",
+        'About': "# Developed by: Samuel Santos. Part of the PhD Research. Dec/2025"
     }
 )
 
